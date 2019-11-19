@@ -1,0 +1,58 @@
+﻿@model drugstore_001.LineaVenta
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>LineaVenta</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.cantidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cantidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.subtotal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.subtotal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.precio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.precio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Producto.descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Producto.descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Venta.idVenta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Venta.idVenta)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idLineaVenta }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
