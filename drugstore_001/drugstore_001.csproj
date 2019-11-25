@@ -145,6 +145,7 @@
     <Compile Include="Controllers\LineaVentasController.cs" />
     <Compile Include="Controllers\LiquidacionsController.cs" />
     <Compile Include="Controllers\LocalidadsController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PagoesController.cs" />
     <Compile Include="Controllers\ProductoesController.cs" />
     <Compile Include="Controllers\ProveedorsController.cs" />
@@ -351,6 +352,7 @@
     <Content Include="Views\Provincias\Details.cshtml" />
     <Content Include="Views\Provincias\Edit.cshtml" />
     <Content Include="Views\Provincias\Index.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

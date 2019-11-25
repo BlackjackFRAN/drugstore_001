@@ -1,11 +1,15 @@
 ﻿@{
     ViewBag.Title = "Home Page";
+    if (Session["userId"]== null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
 }
 
 <div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <h1>Drugstore</h1>
+    <p class="lead">Proyecto diseñado para el final de la materi Gestion de Datos.</p>
+    
 </div>
 
 <div>
@@ -25,7 +29,7 @@
     @Html.ActionLink("Productos", "Index", "Productoes")<br />
     @Html.ActionLink("Proveedores", "Index", "Proveedors")<br />
     @Html.ActionLink("Provincias", "Index", "Provincias")<br />
-    @Html.ActionLink("Familiar", "Index", "Familiars")<br />
+    
 
 
 

@@ -17,14 +17,75 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Nombre de la aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Drugstore", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+                <ul class="nav navbar-nav navbar-left">
+                    
+                    <li>@Html.ActionLink("Productos", "Index", "Productoes")</li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ventas <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+
+                            <li>@Html.ActionLink("Ventas", "Index", "Ventas")</li>
+                            <li>@Html.ActionLink("Linea de ventas", "Index", "LineaVentas")</li>
+
+                            <li role="separator" class="divider"></li>
+                            <li>@Html.ActionLink("Pagos", "Index", "Pagoes")</li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Compras <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+
+                            <li>@Html.ActionLink("Compras", "Index", "Compras")</li>
+                            <li>@Html.ActionLink("Linea de compras", "Index", "LineaCompras")</li>
+                            <li><a href="#">Something else here</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Empleados <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+
+                            <li>@Html.ActionLink("Empleados", "Index", "Empleadoes")</li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li>@Html.ActionLink("Familiar", "Index", "Familiars")</li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Liquidacion <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+
+                            <li>@Html.ActionLink("Liquidacion", "Index", "Liquidacions")</li>
+                            
+                            <li>@Html.ActionLink("Concepto", "Index", "Conceptoes")</li>
+                            <li role="separator" class="divider"></li>
+                            <li>@Html.ActionLink("Detalle de liquidacion", "Index", "DetalleLiquidacions")</li>
+                        </ul>
+                    </li>
+
+                    <li>@Html.ActionLink("Proveedores", "Index", "Proveedors")</li>
+
+
+
+
+
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
                     <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
                     <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
+                    <li><button type="button" class="btn btn-default navbar-btn">@Session["userName"].ToString()</button></li>
+                    <li><a href="@Url.Action("LogOut", "Login")">Cerrar Sesion</a></li>
                 </ul>
+
             </div>
         </div>
     </div>

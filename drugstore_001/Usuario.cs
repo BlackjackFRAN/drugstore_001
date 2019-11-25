@@ -7,6 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+
 namespace drugstore_001
 {
     using System;
@@ -24,13 +27,23 @@ namespace drugstore_001
         public int idUsuario { get; set; }
         public Nullable<int> idEmpleado { get; set; }
         public Nullable<int> tipo { get; set; }
+
+        [DisplayName("Nombre de usuario")]
+        [Required(ErrorMessage = "Este campo es obligatorio!")]
         public string usuario1 { get; set; }
+        
+        [DisplayName("Contraseña")]
+        [DataType(DataType.Password)]
+        [Required(ErrorMessage = "Este campo es obligatorio!")]
         public string contrasenia { get; set; }
+       
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Compra> Compras { get; set; }
         public virtual Empleado Empleado { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Venta> Ventas { get; set; }
+
+        public string LoginErrorMsj { get; set; }
     }
 }
