@@ -1,0 +1,12 @@
+﻿@model drugstore_001.Localidad
+
+<option value="">--Seleccione--</option>
+
+@if(ViewBag.listaLocalidad!=null)
+{
+    foreach(var item in ViewBag.listaLocalidad)
+    {
+        <option value="@item.Value">@item.Text</option>
+    }
+}
+
