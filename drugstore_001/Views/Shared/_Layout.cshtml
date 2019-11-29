@@ -82,7 +82,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
                     <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
-                    <li><button type="button" class="btn btn-default navbar-btn">@Session["userName"].ToString()</button></li>
+                   
                     <li><a href="@Url.Action("LogOut", "Login")">Cerrar Sesion</a></li>
                 </ul>
 

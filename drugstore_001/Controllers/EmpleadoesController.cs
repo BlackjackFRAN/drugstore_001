@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using drugstore_001;
+using drugstore_001.Models;
 
 namespace drugstore_001.Controllers
 {
@@ -39,13 +40,61 @@ namespace drugstore_001.Controllers
         // GET: Empleadoes/Create
         public ActionResult Create()
         {
-            ViewBag.idDireccion = new SelectList(db.Direccions, "idDireccion", "calle");
+            List<Provincia> lista = db.Provincias.ToList();
+            ViewBag.ListaProvincia = new SelectList(lista, "idProvincia", "nombre");
             return View();
         }
+
+        public JsonResult GetLocalidades(int idProvincia)
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+            List<Localidad> lista = db.Localidads.Where(x => x.idProvincia == idProvincia).ToList();
+            return Json(lista, JsonRequestBehavior.AllowGet);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(EmpleadoCLS empleado)
+        {
+            if (!ModelState.IsValid)
+            {
+            List<Provincia> lista = db.Provincias.ToList();
+            ViewBag.ListaProvincia = new SelectList(lista, "idProvincia", "nombre");
+            return View(empleado);
+            }
+
+
+
+            Direccion dir = new Direccion();
+            dir.calle = empleado.calle;
+            dir.numero = empleado.numero;
+            dir.codigoPostal = empleado.codigoPostal;
+            dir.idDireccion = 53;
+            db.Direccions.Add(dir);
+            db.SaveChanges();
+
+            Empleado emp = new Empleado();
+            emp.tipo = empleado.tipo;
+            emp.nombre = empleado.nombre;
+            emp.apellido = empleado.apellido;
+            emp.fechaNacimiento = empleado.fechaNacimiento;
+            emp.sueldoBase = empleado.sueldoBase;
+            emp.estadoCivil = empleado.estadoCivil;
+            emp.dni = empleado.dni;
+            Direccion direccion = db.Direccions.Where(x=>x.calle == empleado.calle && x.numero == empleado.numero).FirstOrDefault();
+            emp.idDireccion = direccion.idDireccion;
+            db.Empleadoes.Add(emp);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+       
 
         // POST: Empleadoes/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
+        
+        /*
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "idEmpleado,idDireccion,tipo,nombre,apellido,fechaNacimiento,sueldoBase,estadoCivil,dni")] Empleado empleado)
@@ -60,6 +109,8 @@ namespace drugstore_001.Controllers
             ViewBag.idDireccion = new SelectList(db.Direccions, "idDireccion", "calle", empleado.idDireccion);
             return View(empleado);
         }
+        */
+
 
         // GET: Empleadoes/Edit/5
         public ActionResult Edit(int? id)

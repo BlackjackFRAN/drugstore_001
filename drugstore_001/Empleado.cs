@@ -11,7 +11,8 @@ namespace drugstore_001
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Empleado
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -27,6 +28,8 @@ namespace drugstore_001
         public Nullable<int> tipo { get; set; }
         public string nombre { get; set; }
         public string apellido { get; set; }
+
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> fechaNacimiento { get; set; }
         public Nullable<double> sueldoBase { get; set; }
         public string estadoCivil { get; set; }
@@ -39,5 +42,6 @@ namespace drugstore_001
         public virtual ICollection<Liquidacion> Liquidacions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Usuario> Usuarios { get; set; }
+
     }
 }
