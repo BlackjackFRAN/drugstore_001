@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using drugstore_001;
+using drugstore_001.Filters;
 
 
 namespace drugstore_001.Controllers
@@ -16,6 +17,7 @@ namespace drugstore_001.Controllers
         private Database1Entities db = new Database1Entities();
 
         // GET: Compras
+        [AutorizarUsuario.AuthorizeUser(idTipo:1)]
         public ActionResult Index()
         {
             var compras = db.Compras.Include(c => c.Proveedor).Include(c => c.Usuario);
