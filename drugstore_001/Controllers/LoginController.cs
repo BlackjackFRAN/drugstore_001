@@ -31,6 +31,7 @@ namespace drugstore_001.Controllers
                 {
                     Session["userId"] = userDetails.idEmpleado;
                     Session["userName"] = userDetails.usuario1;
+                    Session["user"] = userDetails;
                     return RedirectToAction("Index", "Home");
                 }
             }
